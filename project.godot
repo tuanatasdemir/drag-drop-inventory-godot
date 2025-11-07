@@ -1,0 +1,36 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Escape of the Alchemist"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.1", "Mobile")
+config/icon="res://images/background.png"
+
+[autoload]
+
+Inventory="*res://scripts/Inventory.gd"
+
+[display]
+
+window/size/viewport_width=736
+window/size/viewport_height=736
+window/size/resizable=false
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://images/mouse.png"
+
+[dotnet]
+
+project/assembly_name="Escape of the Alchemist"
+
+[rendering]
+
+renderer/rendering_method="mobile"

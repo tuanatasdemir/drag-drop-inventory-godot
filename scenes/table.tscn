@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8pwpdusv4hf5"]
+
+[ext_resource type="Script" path="res://scripts/table.gd" id="1_5sux7"]
+[ext_resource type="Texture2D" uid="uid://bgjq1ch4taxj4" path="res://images/table200.png" id="2_ckyw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t2qm"]
+size = Vector2(105, 127)
+
+[node name="Table" type="Area2D" groups=["drop_target"]]
+script = ExtResource("1_5sux7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ckyw8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 5.5)
+shape = SubResource("RectangleShape2D_1t2qm")

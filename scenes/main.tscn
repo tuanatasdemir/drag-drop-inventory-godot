@@ -1,0 +1,134 @@
+[gd_scene load_steps=14 format=3 uid="uid://hywse5tojcmg"]
+
+[ext_resource type="Texture2D" uid="uid://df240c11nvyrg" path="res://images/backgorund1.png" id="1_1ry1w"]
+[ext_resource type="PackedScene" uid="uid://c8pwpdusv4hf5" path="res://scenes/table.tscn" id="1_m1aco"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_u63ex"]
+[ext_resource type="PackedScene" uid="uid://cd0nvw81hnymg" path="res://scenes/potion1.tscn" id="2_gjulh"]
+[ext_resource type="PackedScene" uid="uid://cmkbcaw6q6woh" path="res://scenes/potion2.tscn" id="3_a1rgb"]
+[ext_resource type="Texture2D" uid="uid://dvqv7a0v4ks3c" path="res://images/label.png" id="6_hdv0v"]
+[ext_resource type="FontFile" uid="uid://yiukpmdm5rm6" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="7_njn3f"]
+[ext_resource type="AudioStream" uid="uid://n2ltqioxm45x" path="res://sounds/music.mp3" id="8_kypiq"]
+
+[sub_resource type="Animation" id="Animation_ghhnx"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(381, 300), Vector2(381, 310), Vector2(381, 300)]
+}
+
+[sub_resource type="Animation" id="Animation_q5bxt"]
+resource_name = "sallanma"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(381, 300), Vector2(381, 310), Vector2(381, 300)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m05p6"]
+_data = {
+"RESET": SubResource("Animation_ghhnx"),
+"sallanma": SubResource("Animation_q5bxt")
+}
+
+[sub_resource type="Animation" id="Animation_fc5uk"]
+resource_name = "sallanma"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(382, 305), Vector2(382, 315), Vector2(382, 305)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8n8cg"]
+_data = {
+"sallanma": SubResource("Animation_fc5uk")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u63ex")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 736.0
+offset_bottom = 736.0
+texture = ExtResource("1_1ry1w")
+
+[node name="Area2D" parent="." instance=ExtResource("1_m1aco")]
+position = Vector2(355, 443)
+
+[node name="Area2D2" parent="." instance=ExtResource("2_gjulh")]
+position = Vector2(259, 400)
+
+[node name="Area2D3" parent="." instance=ExtResource("3_a1rgb")]
+position = Vector2(311, 177)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(381, 300)
+texture = ExtResource("6_hdv0v")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -146.0
+offset_top = -4.0
+offset_right = 178.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_njn3f")
+theme_override_font_sizes/font_size = 13
+text = "Congratulations, you have collected the potions."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_m05p6")
+}
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kypiq")
+
+[node name="Tutorial" type="Sprite2D" parent="."]
+position = Vector2(382, 305)
+texture = ExtResource("6_hdv0v")
+
+[node name="tutorial_label" type="Label" parent="Tutorial"]
+offset_left = -151.0
+offset_top = -7.0
+offset_right = 118.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_njn3f")
+theme_override_font_sizes/font_size = 13
+text = "Collect potions"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 161
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial"]
+libraries = {
+"": SubResource("AnimationLibrary_8n8cg")
+}
